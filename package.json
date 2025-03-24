@@ -1,0 +1,41 @@
+{
+	"name": "mcp-playwright-screenshot",
+	"version": "1.0.0",
+	"main": "index.js",
+	"type": "module",
+	"bin": {
+		"playwright-screenshot": "./build/index.js"
+	},
+	"files": [
+		"build"
+	],
+	"scripts": {
+		"build": "tsc && chmod 755 build/index.js",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prettierformat": "prettier --write",
+		"prettierall": "prettier --write .",
+		"lint-staged": "lint-staged"
+	},
+	"precommit": "lint-staged",
+	"lint-staged": {
+		"./**/*.{js,jsx,ts,tsx}": [
+			"npm run prettierformat",
+			"git add ."
+		]
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "^1.7.0",
+		"zod": "^3.24.2"
+	},
+	"devDependencies": {
+		"@types/node": "^22.13.13",
+		"lint-staged": "^15.5.0",
+		"pre-commit": "^1.2.2",
+		"prettier": "^3.5.3",
+		"typescript": "^5.8.2"
+	}
+}
