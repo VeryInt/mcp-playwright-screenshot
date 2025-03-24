@@ -1,6 +1,6 @@
 // Helper function for making NWS API requests
 import { USER_AGENT } from "./constants.js";
-async function makeNWSRequest<T>(url: string): Promise<T | null> {
+export async function makeNWSRequest<T>(url: string): Promise<T | null> {
     const headers = {
       "User-Agent": USER_AGENT,
       Accept: "application/geo+json",
@@ -18,7 +18,7 @@ async function makeNWSRequest<T>(url: string): Promise<T | null> {
     }
   }
   
-  interface AlertFeature {
+  export interface AlertFeature {
     properties: {
       event?: string;
       areaDesc?: string;
@@ -29,7 +29,7 @@ async function makeNWSRequest<T>(url: string): Promise<T | null> {
   }
   
   // Format alert data
-  function formatAlert(feature: AlertFeature): string {
+  export function formatAlert(feature: AlertFeature): string {
     const props = feature.properties;
     return [
       `Event: ${props.event || "Unknown"}`,
@@ -41,7 +41,7 @@ async function makeNWSRequest<T>(url: string): Promise<T | null> {
     ].join("\n");
   }
   
-  interface ForecastPeriod {
+export  interface ForecastPeriod {
     name?: string;
     temperature?: number;
     temperatureUnit?: string;
@@ -50,17 +50,17 @@ async function makeNWSRequest<T>(url: string): Promise<T | null> {
     shortForecast?: string;
   }
   
-  interface AlertsResponse {
+export  interface AlertsResponse {
     features: AlertFeature[];
   }
   
-  interface PointsResponse {
+export  interface PointsResponse {
     properties: {
       forecast?: string;
     };
   }
   
-  interface ForecastResponse {
+export  interface ForecastResponse {
     properties: {
       periods: ForecastPeriod[];
     };
